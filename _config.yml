@@ -1,0 +1,24 @@
+url: https://montrealrobotics.github.io
+
+includes_dir: website-assets/_includes
+layouts_dir: website-assets/_layouts
+sass:
+  sass_dir: website-assets/_sass
+asset_dir: /website-assets/assets
+
+base: ''
+
+# Navigation bar links.
+navigation:
+  - title: Home
+    link: /
+  - title: People
+    link: /people.html
+  - title: Research
+    link: /research.html
+  - title: Publications
+    link: /publications/
+  - title: Contact
+    link: /contact.html
+  - title: Blog
+    link: /blog.html

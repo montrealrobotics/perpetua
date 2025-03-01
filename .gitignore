@@ -1,0 +1,5 @@
+_site
+/test-deploy.sh
+.idea/
+Gemfile.lock
+.DS_Store
