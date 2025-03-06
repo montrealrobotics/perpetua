@@ -6,7 +6,7 @@ sass:
   sass_dir: website-assets/_sass
 asset_dir: /website-assets/assets
 
-base: ''
+base: '/perpetua'
 
 # Navigation bar links.
 navigation:

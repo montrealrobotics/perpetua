@@ -1,7 +1,114 @@
 ---
 layout: default
-title: Project template
+title: Perpetua
 permalink: index.html
+use_math: True
 ---
 
-Edit this
+<!--Actual Page-->
+<h1 style="text-align: center; font-family: Helvetica, sans-serif"><em>Perpetua</em>: Multi-Hypothesis Persistence Modeling for Semi-Static Environments</h1>
+
+<!--Venue-->
+<h4 style="text-align: center; font-family: Helvetica, sans-serif; font-weight: bold"><em>Pre-print</em></h4>
+
+<!--Authors-->
+{% include_relative _relative_includes/authors.html %}
+
+<!--Badges-->
+<br>
+{% include_relative _relative_includes/badges.html %}
+<br>
+
+<!--Teaser Video-->
+<a id="main_video"></a>
+{% include_relative _relative_includes/main_video.html %}
+<br>
+
+<!--Abstract-->
+<div style="text-align: center; width: 85%; margin:auto">
+<p style='text-align: justify; font-style: italic'> 
+<a style="font-weight: bold"> Abstract. </a>Many robotic systems require extended deployments in complex, dynamic environments. In such deployments, parts of the environment may change in between subsequent observations by the robot. Few robotic mapping or environment modeling algorithms are capable of representing dynamic features in a way that enables predicting their future state. Instead, most approaches opt to filter certain state observations, either by removing them or some form of weighted averaging. This paper introduces <em>Perpetua</em>, a method for modeling the dynamics of semi-static features. Perpetua is able to: incorporate prior knowledge about the dynamics of the feature if it exists, track multiple hypotheses, and adapt over time to enable predicting their future state. Specifically, we chain together mixtures of ``persistence'' and ``emergence'' filters to model the probability that features will disappear or reappear in a formal Bayesian framework. The approach is an efficient, scalable, general, and robust method for estimating the state of features in an environment, both in the present as well as at arbitrary future times. Through experiments on both simulated and real-world data, we find Perpetua yields better accuracy than similar approaches while also being online adaptable and robust to missing observations.</p>
+</div>
+
+<!--About-->
+<h2 style="text-align: left">About</h4>
+<p style="text-align: justify;">
+    In this page we present an introduction to our persistence estimator <em>Perpetua</em>, as well as additional videos. For further information and a more detailed explanation, please refer to <a href="https://github.com/montrealrobotics/harmonic-filter">our paper!</a>
+</p>
+
+<!--Task-->
+<h2 style="text-align: left">Task</h4>
+<p style="text-align: justify;">
+    In this work, we focus on environments undergoing semi-static changes, where features may appear and disappear over time, but where these transitions are not necessarily observable. Our goal is to both model and predict the presence or absence of these features over time—a task known as persistence estimation—at any given time $t \in [0, \infty)$.
+</p>
+
+<!--Method-->
+<h2 style="text-align: left">Method</h4>
+<p style="text-align: justify;">
+    We introduce <em><b>Perpetua</b></em>, a powerful and efficient method for estimating the persistence of semi-static features. Designed to handle dynamic environments, our method offers key advantages, including robustness to missing observations, online adaptation from data, accurate future persistence prediction, the ability to model multiple persistence hypotheses, and reduced dependence on prior knowledge.  
+</p>
+<p style="text-align: justify;">
+    Perpetua models persistence using a combination of two mixture models: one for disappearance, called the <em><b>mixture of persistence filters</b></em>, and one for reappearance, known as the <em><b>mixture of emergence filters</b></em>. This approach allows us to track multiple persistence hypotheses for a feature, capturing changes occurring at different time scales, such as hourly versus daily variations. These models are paired with a <em><b>switching mechanism</b></em> (state machine) that dynamically toggles between them, ensuring accurate tracking of feature persistence over time. Unlike previous filtering-based approaches, which often rely on fixed parameters or manual tuning, we introduce an expectation-maximization-based framework for <em><b>learning</b></em> model parameters directly from noisy observations. 
+</p>
+
+<br>
+{% include_relative _relative_includes/method.html %}
+<br>
+
+<p style="text-align: justify;">
+    We emphasize the significance of the mixture formulation in Perpetua, as it enables the model to capture multiple persistence hypotheses for a feature. 
+</p>
+
+<br>
+{% include_relative _relative_includes/multi_hypothesis_video.html %}
+<br>
+
+<p style="text-align: justify;">
+    In the above video, the top panel shows Perpetua using a two-component mixture, while the bottom panel shows a single-component mixture. From $t_0$ to $t_1$, persistence estimates adapt to the dynamics based on the available noisy observations. Between $t_1$ and $t_2$, Perpetua relies on the component with the largest posterior weight to predict feature persistence in the absence of new observations. At $t_2$, when observations resume, Perpetua with two components adjusts its persistence estimate by switching to the mixture component that best explains the new feature dynamics, using it to make persistence predictions beyond $t_3$. In contrast, Perpetua with one component fails to make this adjustment.
+</p>
+
+<!--Evaluation-->
+<h2 style="text-align: left">Evaluation</h4> 
+
+<p style="text-align: justify;">
+    We evaluate the predictive capabilities of our method and its robustness to data sparsity in both a simulated and a real-world environment, using two distinct datasets. Throughout the evaluation, we compare our method against four well-established baselines for persistence estimation in semi-static scenes.
+</p>
+
+<p style="text-align: justify;">
+    <b>Simulation</b>. A robot navigates a room composed of eight landmarks where four are static and four are semi-static. All semi-static landmarks have different appearance and disappearance times, ranging from 1min to 20min, sampled from a mixture of log-normal distributions. Landmarks can have up to three distinct appearance and disappearance times. During data collection, the robot navigates counter-clockwise while during testing the robot moves clockwise. 
+</p>
+
+<br>
+{% include_relative _relative_includes/row_videos_x2.html title_1="Train" title_2="Test" src_1="img/train.mp4" src_2="img/test.mp4" %}
+<br>
+
+<p style="text-align: justify;">
+    <b>Parking Lot Dataset</b>. Dataset from Almeida <em>et al.</em> which consists of 12,427 images of parking lots captured under varying environmental conditions. These images were taken in the parking lots of the Federal University of Parana (UFPR), with observations recorded every five minutes for more than 30 days. Our evaluation focus on the UFPR04 and UFPR05 subsets, which represent different views of the same parking lot captured from the fourth and fifth floors of the UFPR building. To match real-world conditions, we augment the dataset using an off-the-shelf object detector, YOLOv11, to obtain observations. 
+</p>
+
+<br>
+{% include_relative _relative_includes/row_tables_x2.html title_1="UFPR04" title_2="UFPR05" src_1="img/UFPR04.jpg" src_2="img/UFPR05.jpg" %}
+<br>
+
+<!--Results-->
+<h2 style="text-align: left">Results</h4> 
+
+<p style="text-align: justify;">
+    The following image shows prediction (a-c) and the data sparsity ablation (d-f) in the simulated room (a,d) and parking lot datasets, UFPR04: (b,e), UFPR05: (c,f). In this assessment we use as metric the balanced accuracy (B-Accuracy), which accounts for class imbalance by equally weighting true positives and true negatives. The top row shows the balanced accuracy of all methods when predicting feature persistence for a prediction time ($\Delta t$) in the future. The bottom row presents an ablation study on data sparsity, evaluating filter-based methods when only a random subset of the noisy test data is available.
+</p>
+
+<br>
+{% include_relative _relative_includes/banner_results.html %}
+<br>
+
+<p style="text-align: justify;">
+    Lastly we show the persistence estimates of our method compared with the baselines. As seen, the persistence estimates from our method align with the ground truth state of a semi-static feature in the UFPR04 dataset.
+</p>
+
+<br>
+{% include_relative _relative_includes/all_methods.html %}
+<br>
+
+<!--Citation-->
+<h2 style="text-align: left">Citation</h4>
+{% include_relative _relative_includes/citation.html %}
