@@ -1,0 +1,11 @@
+global:
+  french: Français
+  english: English
+nav:
+  Home: Acceuil
+  People: Qui sommes nous?
+  Research: Recherche
+  Publications: Publications
+  Events: Événements
+  Contact: Contact
+  Blog: Blog

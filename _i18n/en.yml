@@ -1,0 +1,12 @@
+# Navigation bar links.
+global:
+  french: Français
+  english: English
+nav:
+  Home: Home
+  People: People
+  Research: Research
+  Publications: Publications
+  Events: Events
+  Contact: Contact
+  Blog: Blog

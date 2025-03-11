@@ -22,3 +22,9 @@ navigation:
     link: /contact.html
   - title: Blog
     link: /blog.html
+
+
+plugins:
+  - jekyll-multiple-languages-plugin
+
+languages: ["en", "fr"]
