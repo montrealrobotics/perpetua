@@ -1,5 +1,7 @@
 url: https://montrealrobotics.github.io
 
+repository: montrealrobotics/perpetua 
+
 includes_dir: website-assets/_includes
 layouts_dir: website-assets/_layouts
 sass:
