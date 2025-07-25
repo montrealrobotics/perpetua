@@ -9,7 +9,7 @@ use_math: True
 <h1 style="text-align: center; font-family: Helvetica, sans-serif"><em>Perpetua</em>: Multi-Hypothesis Persistence Modeling for Semi-Static Environments</h1>
 
 <!--Venue-->
-<h4 style="text-align: center; font-family: Helvetica, sans-serif; font-weight: bold"><em>Pre-print</em></h4>
+<h4 style="text-align: center; font-family: Helvetica, sans-serif; font-weight: bold"><em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2025)</em></h4>
 
 <!--Authors-->
 {% include_relative _relative_includes/authors.html %}
@@ -27,7 +27,7 @@ use_math: True
 <!--Abstract-->
 <div style="text-align: center; width: 85%; margin:auto">
 <p style='text-align: justify; font-style: italic'> 
-<a style="font-weight: bold"> Abstract. </a>Many robotic systems require extended deployments in complex, dynamic environments. In such deployments, parts of the environment may change in between subsequent observations by the robot. Few robotic mapping or environment modeling algorithms are capable of representing dynamic features in a way that enables predicting their future state. Instead, most approaches opt to filter certain state observations, either by removing them or some form of weighted averaging. This paper introduces <em>Perpetua</em>, a method for modeling the dynamics of semi-static features. Perpetua is able to: incorporate prior knowledge about the dynamics of the feature if it exists, track multiple hypotheses, and adapt over time to enable predicting their future state. Specifically, we chain together mixtures of ``persistence'' and ``emergence'' filters to model the probability that features will disappear or reappear in a formal Bayesian framework. The approach is an efficient, scalable, general, and robust method for estimating the state of features in an environment, both in the present as well as at arbitrary future times. Through experiments on both simulated and real-world data, we find Perpetua yields better accuracy than similar approaches while also being online adaptable and robust to missing observations.</p>
+<a style="font-weight: bold"> Abstract. </a>Many robotic systems require extended deployments in complex, dynamic environments. In such deployments, parts of the environment may change between subsequent robot observations. Most robotic mapping or environment modeling algorithms are incapable of representing dynamic features in a way that enables predicting their future state. Instead, they opt to filter certain state observations, either by removing them or some form of weighted averaging. This paper introduces <i>Perpetua</i>, a method for modeling the dynamics of semi-static features. Perpetua is able to: incorporate prior knowledge about the dynamics of the feature if it exists, track multiple hypotheses, and adapt over time to enable predicting of future feature states. Specifically, we chain together mixtures of "persistence" and "emergence filters to model the probability that features will disappear or reappear in a formal Bayesian framework. The approach is an efficient, scalable, general, and robust method for estimating the states of features in an environment, both in the present as well as at arbitrary future times. Through experiments on simulated and real-world data, we find that Perpetua yields better accuracy than similar approaches while also being online adaptable and robust to missing observations.</p>
 </div>
 
 <!--About-->
@@ -39,7 +39,8 @@ use_math: True
 <!--Task-->
 <h2 style="text-align: left">Task</h4>
 <p style="text-align: justify;">
-    In this work, we focus on environments undergoing semi-static changes, where features may appear and disappear over time, but where these transitions are not necessarily observable. Our goal is to both model and predict the presence or absence of these features over time—a task known as persistence estimation—at any given time $t \in [0, \infty)$.
+    In this work, we focus on environments undergoing semi-static changes, where features may appear and disappear over time, but where these transitions are not necessarily observable. Given observations up to time $t_N$, our goal is to model and predict the presence or absence of these features over time—a task known as persistence estimation—at any time $t \in [t_N, \infty)$.
+
 </p>
 
 <!--Method-->
@@ -83,7 +84,7 @@ use_math: True
 <br>
 
 <p style="text-align: justify;">
-    <b>Parking Lot Dataset</b>. Dataset from Almeida <em>et al.</em> which consists of 12,427 images of parking lots captured under varying environmental conditions. These images were taken in the parking lots of the Federal University of Parana (UFPR), with observations recorded every five minutes for more than 30 days. Our evaluation focus on the UFPR04 and UFPR05 subsets, which represent different views of the same parking lot captured from the fourth and fifth floors of the UFPR building. To match real-world conditions, we augment the dataset using an off-the-shelf object detector, YOLOv11, to obtain observations. 
+    <b>Parking Lot Dataset</b>. Dataset from Almeida <em>et al.</em> which consists of 12,427 images of parking lots captured under varying environmental conditions. These images were taken in the parking lots of the Federal University of Parana (UFPR), with observations recorded every five minutes for more than 30 days. Our evaluation focus on the UFPR04 and UFPR05 subsets, which represent different views of the same parking lot captured from the fourth and fifth floors of the UFPR building. To match real-world conditions, we process the dataset using an off-the-shelf object detector, YOLOv11, to obtain observations. 
 </p>
 
 <br>
